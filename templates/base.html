@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}Mod Instruction{% endblock %}</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css">
+  </head>
+  <body>
+    {% if not hide_navbar %}
+    <header class="header">
+      <a href="https://tbcbank.ge/ka/tbc-education">
+        <img src="/static/TBC_Bank_logo.svg.png" class="logo" alt="logo" />
+      </a>
+      <nav>
+        <ul class="nav">
+          <li><a href="/howitworks" class="navs">How Mods Works</a></li>
+          <li><a href="/marketplace" class="navs">Marketplace</a></li>
+          <li><a href="/gallery" class="navs">Mod Gallery</a></li>
+          <li><a href="/profile" class="navs">View Profile</a></li>
+
+          {% if current_user.is_authenticated and current_user.is_admin %}
+            <li><a href="/admin" class="navs">Admin Panel</a></li>
+          {% endif %}
+
+          {% if current_user.is_authenticated %}
+            <li class="navs-welcome">Welcome, {{ current_user.username }}</li>
+            <li><a href="{{ url_for('logout') }}" class="navs last-nav">Logout</a></li>
+          {% else %}
+            <li><a href="{{ url_for('login') }}" class="navs last-nav">Login</a></li>
+            <li><a href="{{ url_for('register') }}" class="navs last-nav">Register</a></li>
+          {% endif %}
+        </ul>
+      </nav>
+      <button class="js-btn button-js">
+        <ion-icon name="grid-outline"></ion-icon>
+      </button>
+    </header>
+    {% endif %}
+
+
+    <main>
+      {% block content %}
+      {% endblock %}
+    </main>
+{% if not hide_footer %}
+    <footer class="footer">
+      <div class="footer-box">
+        <div class="footer-col flex-just">
+          <span><a href="https://tbcbank.ge/ka">
+            <img src="/static/images.png" alt="footer logo" class="footer-logo"/>
+          </a></span>
+          <ul class="logos2"></ul>
+          <p class="down">
+            <span class="currentYear">2025</span> All Right Reserved By Saba Amiranashvili.
+          </p>
+        </div>
+
+        <div class="footer-col contact">
+          <p class="main-p">Contact us</p>
+          <div class="footer-flex">
+            <p>Address: Georgia</p>
+            <p>+995 32 2 27 27 27</p>
+            <ul class="contact-flex">
+              <li><a>info@tbcbank.ge</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-col inline-block block2">
+          <p class="main-p">Resources</p>
+          <ul class="footer-flex">
+            <li><a href="#">Help center</a></li>
+            <li><a href="#">Privacy and terms</a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+    {% endif %}
+
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  </body>
+</html>

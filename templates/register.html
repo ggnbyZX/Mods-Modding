@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div style="position: absolute; top: 20px; left: 30px;">
+    <a href="{{ url_for('home') }}" style="background-color: #444; color: white; padding: 10px 18px; border-radius: 8px; text-decoration: none; font-weight: 500; box-shadow: 0 4px 8px rgba(0,0,0,0.2); transition: background-color 0.3s ease;">
+      ← Back to Home
+    </a>
+  </div>
+
+  <section id="cta" class="cta padtop">
+    <div class="cta-cont">
+      <div class="cta-box box-img">
+        <div class="cta-img" role="img" aria-label="futuristic image"></div>
+        <div class="cta-txt">
+          <div class="header-hiw margbo">
+            <h2 class="hiw-h2">Get free Mods and more!</h2>
+          </div>
+
+          {% with messages = get_flashed_messages() %}
+            {% if messages %}
+              <div style="background-color: #ffecec; color: #cc0000; padding: 10px 15px; border-radius: 6px; margin-bottom: 15px; text-align: center;">
+                {% for message in messages %}
+                  {{ message }}
+                {% endfor %}
+              </div>
+            {% endif %}
+          {% endwith %}
+
+          <p class="cta-p">Fill the form to activate your email address for your free mod, get notifications for our upcoming releases and other activities.</p>
+
+          <form class="form" method="post">
+            {{ form.hidden_tag() }}
+
+            <div>
+              {{ form.full_name.label }}
+              {{ form.full_name() }}
+            </div>
+
+            <div>
+              {{ form.email.label }}
+              {{ form.email() }}
+            </div>
+
+            <div>
+              {{ form.password.label }}
+              {{ form.password() }}
+            </div>
+
+            <div>
+              {{ form.interest_area.label }}
+              {{ form.interest_area() }}
+            </div>
+
+            {{ form.submit(class_='button but-top') }}
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Marketplace</title>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/style.css">
+  <style>
+    .grid3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+      padding: 20px;
+    }
+    .shadow {
+      background-color: #fff;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      transition: 0.3s;
+    }
+    .shadow:hover {
+      transform: scale(1.02);
+    }
+  </style>
+</head>
+<body>
+
+  <div style="position: absolute; top: 20px; left: 30px;">
+  <a href="{{ url_for('home') }}" style="
+      background-color: #444;
+      color: white;
+      padding: 10px 18px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 500;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      transition: background-color 0.3s ease;">
+    ← Back to Home
+  </a>
+</div>
+
+<section class="arts" id="market">
+  <div class="cont header-hiw text-align">
+    <span class="hiw">marketplace</span>
+    <h2 class="hiw-h2">My most popular Mods</h2>
+  </div>
+
+  <div class="cont grid3 fordiv">
+
+    {% for mod in mods %}
+    <div class="shadow">
+      <a href="{{ mod.link }}" target="_blank" style="text-decoration: none; color: inherit; display: block;">
+        <img src="{{ url_for('static', filename=mod.image) }}" class="card-img" alt="{{ mod.title }}">
+        <div class="card-txt">
+          <div class="text-align">
+            <p class="txt-p">{{ mod.type }}</p>
+            <h3 class="txt-h3">{{ mod.title }}</h3>
+          </div>
+          <ul class="card-ul">
+            <li><ion-icon name="wallet-outline"></ion-icon><span><strong>{{ mod.price }}</strong> USD</span></li>
+            {% if mod.get('sold') is not none %}
+            <li><ion-icon name="bag-check-outline"></ion-icon><span>Sold <strong>{{ mod.sold }}</strong> times</span></li>
+            <li><ion-icon name="trending-up-outline"></ion-icon><span>Sold Daily <strong>{{ mod.daily }}</strong></span></li>
+            {% endif %}
+          </ul>
+        </div>
+      </a>
+    </div>
+    {% endfor %}
+
+    {% for product in products %}
+    <div class="shadow">
+      <a href="{{ product.link }}" target="_blank" style="text-decoration: none; color: inherit; display: block;">
+        <img src="{{ url_for('static', filename=product.image) }}" class="card-img" alt="{{ product.title }}">
+        <div class="card-txt">
+          <div class="text-align">
+            <p class="txt-p">{{ product.type }}</p>
+            <h3 class="txt-h3">{{ product.title }}</h3>
+          </div>
+          <ul class="card-ul">
+            <li><ion-icon name="wallet-outline"></ion-icon><span><strong>{{ product.price }}</strong> USD</span></li>
+            <li><ion-icon name="bag-check-outline"></ion-icon><span>Sold <strong>0</strong> times</span></li>
+            <li><ion-icon name="trending-up-outline"></ion-icon><span>Sold Daily <strong>0</strong></span></li>
+          </ul>
+        </div>
+      </a>
+      <style>
+.delete-button {
+    background-color: rgb(255, 0, 0);
+    color: rgb(255, 255, 255);
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.delete-button:hover {
+    background-color: red;
+    color: white;
+}
+</style>
+
+      <div style="display: flex; gap: 8px; justify-content: center; margin: 10px 0;">
+        <form action="{{ url_for('delete_product', id=product.id) }}" method="POST" style="display:inline;">
+    {{ form.csrf_token }}
+    <button type="submit" class="delete-button">Delete</button>
+</form>
+        <a href="{{ url_for('edit_product', product_id=product.id) }}">
+          <button class="marketplace delete-button" style="background-color: #555;">Edit</button>
+        </a>
+      </div>
+    </div>
+    {% endfor %}
+
+  </div>
+
+  <div class="market" style="text-align: center; margin-top: 20px;">
+    <a href="{{ url_for('add_product') }}" class="marketplace">Add Products</a>
+  </div>
+
+</section>
+
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+</body>
+</html>

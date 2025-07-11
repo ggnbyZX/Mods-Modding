@@ -1,0 +1,165 @@
+{% set hide_navbar = True %}
+{% set hide_footer = True %}
+{% extends "base.html" %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Product</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <style>
+  .form-container {
+  max-width: 500px;
+  margin: 100px auto;
+  background-color: #2b2b2b;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+  .form-container h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: white;
+  }
+
+  .form-container label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 500;
+    color: white;
+  }
+
+  .form-container input,
+  .form-container select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 6px;
+    background: #444;
+    color: white;
+  }
+
+.form-container input[type="submit"] {
+  background-color: #444;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  width: 100%;
+}
+
+  .form-container button {
+  width: 100%;
+  background-color: #444;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+  .form-container a {
+    display: block;
+    text-align: center;
+    margin-top: 15px;
+    color: #ccc;
+    text-decoration: underline;
+  }
+
+  .form-container img {
+    max-width: 100%;
+    border-radius: 8px;
+    margin-bottom: 15px;
+  }
+  .form-container h2 {
+  text-align: center;
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: white;
+}
+</style>
+<h2 style="text-align: center; margin-top: 13rem; font-size: 28px; margin-bottom: 20px;">Add your product</h2>
+    <div class="form-container">
+        <form method="POST" enctype="multipart/form-data">
+            {{ form.hidden_tag() }}
+
+            <div class="form-group">
+                {{ form.name.label }}
+                {{ form.name(class="form-input") }}
+            </div>
+
+            <div class="form-group">
+                {{ form.price.label }}
+                {{ form.price(class="form-input") }}
+            </div>
+
+            <div class="form-group">
+                {{ form.mod_type.label }}
+                {{ form.mod_type(class="form-select") }}
+            </div>
+
+            <div class="form-group">
+                {{ form.link.label }}
+                {{ form.link(class="form-input") }}
+            </div>
+
+    <div class="form-group">
+  {{ form.image(id="image-upload", style="display:none;") }}
+
+  <label for="image-upload" style="
+        display: inline-block;
+        background-color: #444;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 14px;
+        text-align: center;
+      ">
+    Upload mod image
+  </label>
+</div>
+
+<img id="preview-image" src="#" alt="Selected Image" style="
+    display: none;
+    max-width: 100%;
+    margin-top: 15px;
+    border-radius: 8px;
+">
+
+            <div class="form-group">
+                {{ form.submit(class="form-button") }}
+            </div>
+
+        </form>
+        <a href="{{ url_for('marketplace') }}">Go back to marketplace</a>
+
+        <script>
+  document.getElementById('image-upload').addEventListener('change', function () {
+      const file = this.files[0];
+      const preview = document.getElementById('preview-image');
+
+      if (file) {
+          const reader = new FileReader();
+          reader.onload = function (e) {
+              preview.src = e.target.result;
+              preview.style.display = 'block';
+          }
+          reader.readAsDataURL(file);
+      } else {
+          preview.style.display = 'none';
+      }
+  });
+</script>
+    </div>
+</body>
+</html>
+{% endblock %}

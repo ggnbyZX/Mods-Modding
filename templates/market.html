@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap"
+      rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<section class="arts" id="market">
+        <div class="cont header-hiw text-align">
+          <span class="hiw">marketplace</span>
+          <h2 class="hiw-h2">My most popular Mods</h2>
+        </div>
+        <div class="cont grid3 fordiv">
+          <div class="shadow">
+            <img src="/static/1.jpg" class="card-img" alt="popular mod" />
+            <div class="card-txt">
+              <div class="text-align">
+                <p class="txt-p">Vechicle mod</p>
+                <h3 class="txt-h3">{{ mod.title }}</h3>
+              </div>
+              <ul class="card-ul">
+                <li>
+                  <ion-icon name="wallet-outline"></ion-icon>
+                  <span><strong>{{ mod.price }}</strong> USD</span>
+                </li>
+                <li>
+                  <ion-icon name="bag-check-outline"></ion-icon>
+                  <span>{{ mod.sold }} <strong>35</strong> times</span>
+                </li>
+                <li>
+                  <ion-icon name="trending-up-outline"></ion-icon>
+                  <span
+                  >Sold <strong>{{ mod.daily }}</strong></span>
+                  >
+                </li>
+              </ul>
+            </div>
+            </div>
+          </div>
+          <div class="shadow">
+            <img src="/static/2.jpg" class="card-img" alt="popular mod" />
+            <div class="card-txt">
+              <div class="text-align">
+                <p class="txt-p">Map Mod</p>
+                <h3 class="txt-h3">Los Santos</h3>
+              </div>
+              <ul class="card-ul">
+                <li>
+                  <ion-icon name="wallet-outline"></ion-icon>
+                  <span><strong>{{ mod.price }}</strong> USD</span>
+                </li>
+                <li>
+                  <ion-icon name="bag-check-outline"></ion-icon>
+                  <span>Sold <strong>{{ mod.sold }}</strong> times</span>
+                </li>
+                <li>
+                  <ion-icon name="trending-up-outline"></ion-icon>
+                  <span
+                    >Sold Daily <strong>{{ mod.daily }}</strong></span
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+          </div>
+          <div class="shadow">
+            <img src="/static/3.jpg" class="card-img" alt="popular mod" />
+            <div class="card-txt">
+              <div class="text-align">
+                <p class="txt-p">Vechicle Mod</p>
+                <h3 class="txt-h3">Bmw X5M F95</h3>
+              </div>
+              <ul class="card-ul">
+                <li>
+                  <ion-icon name="wallet-outline"></ion-icon>
+                  <span><strong>{{ mod.price }}</strong> USD</span>
+                </li>
+                <li>
+                  <ion-icon name="bag-check-outline"></ion-icon>
+                  <span>Sold <strong>{{ mod.sold }}</strong> times</span>
+                </li>
+                <li>
+                  <ion-icon name="trending-up-outline"></ion-icon>
+                  <span
+                    >Sold Daily <strong>{{ mod.daily }}</strong></span
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="market">
+          <a href="https://www.modland.net" class="marketplace">See marketplace</a>
+        </div>
+      
+      </section>
+      <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<link
+  href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap"
+  rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+<div style="position: absolute; top: 20px; left: 30px;">
+  <a href="{{ url_for('home') }}" style="
+      background-color: #696969;
+      color: white;
+      padding: 10px 18px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 500;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      transition: background-color 0.3s ease;">
+    ← Back to Home
+  </a>
+</div>
+<section class="section-hiw" id="how">
+  <div class="cont header-hiw">
+    <span class="hiw">how Mods work</span>
+    <h2 class="hiw-h2">Your Mod journey in 4 simple steps</h2>
+  </div>
+
+  <div class="cont hiw-grid">
+    <div class="hiw-text">
+      <p class="numbers">01</p>
+      <h3>Create your first Mod</h3>
+      <p class="hiw-p">
+        If you want to start a journey in our Mods world, the first step
+        is to create your own Mod, which is totally yours. After the Mod is created, it is ready
+        to be sent on your profile.
+      </p>
+    </div>
+    <div class="hiw-img">
+      <img src="{{ url_for('static', filename='uub16d92.jpg') }}" class="img1" alt="nft avatars" />
+      <div class="square1"></div>
+    </div>
+
+    <div class="hiw-img num2">
+      <img src="{{ url_for('static', filename='local-online-marketplaces.jpg') }}" class="img2" alt="nft shop" />
+      <div class="square2"></div>
+    </div>
+
+    <div class="hiw-text">
+      <p class="numbers">02</p>
+      <h3>Sell Mods</h3>
+      <p class="hiw-p">
+        After creating Mod and uploading it to your profile, now
+        it's possible for others to buy your Mod. 
+        If someone buys your Mod,
+        money will be sent to your balance.
+      </p>
+    </div>
+
+    <div class="hiw-text">
+      <p class="numbers">03</p>
+      <h3>Get licenses for popular brands</h3>
+      <p class="hiw-p">
+        A license will give you a bigger opportunity 
+        to make similar Mods to reality, which is very 
+        popular and you will have a higher chance of selling your mods.
+      </p>
+    </div>
+    <div class="hiw-img">
+      <img src="{{ url_for('static', filename='Car-Logos-Collage.jpg') }}" class="img2" alt="nft photo" />
+      <div class="square2"></div>
+    </div>
+
+    <div class="hiw-img num4">
+      <img src="{{ url_for('static', filename='dent-Partnership-key-person-of-influence-v2-1024x745.jpeg') }}" class="img3" alt="screenft" />
+      <div class="square"></div>
+    </div>
+
+    <div class="hiw-text">
+      <p class="numbers">04</p>
+      <h3>Having partnership with game owner</h3>
+      <p class="hiw-p">
+        After doing all steps, your hard work must be
+        sent to the owner of the game — the person who
+        gives you partnership and offers you a job
+        which is well-paid and challenging.
+      </p>
+    </div>
+  </div>
+</section>
+
